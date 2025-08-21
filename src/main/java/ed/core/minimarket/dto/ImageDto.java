@@ -1,24 +1,21 @@
-package ed.core.minimarket.model;
+package ed.core.minimarket.dto;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "images")
-public class Image {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name = "format")
-    private String format;
-    @Column(name = "ref_to_file")
-    private String refToFile;
-    @Column(name = "size")
-    private Long size;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "offer_id")
-    private Offer offerId;
 
-    public Image() {
+public class ImageDto {
+
+    private Long id;
+
+    private String format;
+
+    private String refToFile;
+
+    private Long size;
+
+    private OfferDto offerDtoId;
+
+    public ImageDto() {
     }
     public Long getId() {
         return id;
@@ -52,11 +49,11 @@ public class Image {
         this.size = size;
     }
 
-    public Offer getOfferId() {
-        return offerId;
+    public OfferDto getOfferDtoId() {
+        return offerDtoId;
     }
 
-    public void setOfferId(Offer offerId) {
-        this.offerId = offerId;
+    public void setOfferDtoId(OfferDto offerDtoId) {
+        this.offerDtoId = offerDtoId;
     }
 }
