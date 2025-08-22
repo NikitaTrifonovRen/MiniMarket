@@ -59,8 +59,11 @@ public class CrudServiceImpl implements CrudService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public ImageDto saveImage(ImageDto imageDto){
-        Image result = imageRepository.save(mapperUtil.toImageEntity(imageDto));
-        imageDto.setId(result.getId());
+        Image newImage = mapperUtil.toImageEntity(imageDto);
+        Image image = imageRepository.save(newImage);
+        image.setOfferId(offerRepository.findById(imageDto.getOfferId()).orElse(null));
+        imageRepository.save(image);
+        imageDto.setId(image.getId());
         return imageDto;
     }
 

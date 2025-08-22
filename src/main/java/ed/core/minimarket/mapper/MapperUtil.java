@@ -5,16 +5,18 @@ import ed.core.minimarket.dto.OfferDto;
 import ed.core.minimarket.model.Image;
 import ed.core.minimarket.model.Offer;
 import org.mapstruct.Mapper;
-import org.springframework.stereotype.Service;
+import org.mapstruct.Mapping;
+
 
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-@Service
 public interface MapperUtil {
     OfferDto toOfferDto(Offer offer);
     Offer toOfferEntity(OfferDto offerDto);
+    @Mapping(target = "offerId", source = "offerId.id")
     ImageDto toImageDto(Image image);
+    @Mapping(target = "offerId", ignore = true)
     Image toImageEntity(ImageDto imageDto);
     List<ImageDto> toImagesDto(List<Image> imageList);
     List<Image> toImages(List<ImageDto> imageList);

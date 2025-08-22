@@ -30,7 +30,7 @@ public class OfferCrudController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @GetMapping("/read/{id}")
-    public ResponseEntity<OfferDto> readOffer(String id){
+    public ResponseEntity<OfferDto> readOffer(@PathVariable String id){
         return ResponseEntity.ok(crudService.readOffer(id));
     }
     @GetMapping("/readAll")

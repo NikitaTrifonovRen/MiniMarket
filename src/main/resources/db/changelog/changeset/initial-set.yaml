@@ -1,0 +1,81 @@
+databaseChangeLog:
+- changeSet:
+    id: 1755842225687-1
+    author: Nikita (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: images_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: format
+            type: VARCHAR(255)
+        - column:
+            name: ref_to_file
+            type: VARCHAR(255)
+        - column:
+            name: size
+            type: BIGINT
+        - column:
+            name: offer_id
+            type: VARCHAR(255)
+        tableName: images
+- changeSet:
+    id: 1755842225687-2
+    author: Nikita (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: offers_pkey
+            name: id
+            type: VARCHAR(255)
+        - column:
+            name: description
+            type: VARCHAR(255)
+        - column:
+            name: min_count
+            type: numeric(38, 2)
+        - column:
+            name: name
+            type: VARCHAR(255)
+        - column:
+            name: price
+            type: numeric(38, 2)
+        - column:
+            name: stocks
+            type: numeric(38, 2)
+        tableName: offers
+- changeSet:
+    id: 1755842225687-3
+    author: Nikita (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: offer_id
+        baseTableName: images
+        constraintName: fkr3nific01xl4rcfn1h8k5gqjo
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: offers
+        validate: true
+- changeSet:
+      id: 1755842225687-4
+      author: Nikita
+      changes:
+          - renameColumn:
+                tableName: images
+                oldColumnName: format
+                newColumnName: formats
+

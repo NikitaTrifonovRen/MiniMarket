@@ -13,7 +13,7 @@ public class ImageDto {
 
     private Long size;
 
-    private OfferDto offerDtoId;
+    private String offerId;
 
     public ImageDto() {
     }
@@ -49,11 +49,11 @@ public class ImageDto {
         this.size = size;
     }
 
-    public OfferDto getOfferDtoId() {
-        return offerDtoId;
+    public String getOfferId() {
+        return offerId;
     }
 
-    public void setOfferDtoId(OfferDto offerDtoId) {
-        this.offerDtoId = offerDtoId;
+    public void setOfferId(String offerId) {
+        this.offerId = offerId;
     }
 }

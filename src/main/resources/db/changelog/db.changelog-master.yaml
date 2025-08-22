@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changeset/initial-set.yaml
+  - include:
+      file: db/changelog/changeset/1-set.yaml

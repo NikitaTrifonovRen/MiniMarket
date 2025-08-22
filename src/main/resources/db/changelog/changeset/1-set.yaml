@@ -1,0 +1,10 @@
+databaseChangeLog:
+- changeSet:
+      id: 1755842225687-5
+      author: Nikita
+      changes:
+          - renameColumn:
+                tableName: images
+                oldColumnName: formats
+                newColumnName: format
+
