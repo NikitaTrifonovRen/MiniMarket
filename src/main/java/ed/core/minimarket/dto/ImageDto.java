@@ -2,8 +2,11 @@ package ed.core.minimarket.dto;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 
-public class ImageDto {
+
+public class ImageDto implements Serializable {
+    private static final Long serialVersionUID = 1238258755L;
 
     private Long id;
 

@@ -2,11 +2,13 @@ package ed.core.minimarket.dto;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
 
-public class OfferDto {
+public class OfferDto implements Serializable {
+    private static final Long serialVersionUID = 1238274755L;
 
     private String id;
 

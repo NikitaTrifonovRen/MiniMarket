@@ -8,6 +8,9 @@ import ed.core.minimarket.model.Offer;
 import ed.core.minimarket.repository.ImageRepository;
 import ed.core.minimarket.repository.OfferRepository;
 import jakarta.persistence.EntityManager;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +36,7 @@ public class CrudServiceImpl implements CrudService {
         this.entityManager = entityManager;
     }
     @Override
+    @CachePut(value = "offer", key = "#result.id")
     @Transactional(propagation = Propagation.REQUIRED)
     public OfferDto saveOffer(OfferDto offerDto){
         Offer result = offerRepository.save(mapperUtil.toOfferEntity(offerDto));
@@ -40,11 +44,13 @@ public class CrudServiceImpl implements CrudService {
         return offerDto;
     }
     @Override
+    @CacheEvict(value = "offer", key = "#id")
     @Transactional(propagation = Propagation.REQUIRED)
     public void deleteOffer(String id){
         offerRepository.deleteById(id);
     }
     @Override
+    @Cacheable(value = "offer", key = "#id")
     @Transactional(propagation = Propagation.REQUIRED)
     public OfferDto readOffer(String id){
         Offer offer = offerRepository.findById(id).orElse(null);
